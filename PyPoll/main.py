@@ -53,3 +53,27 @@ for candidate_name, candidate_votes in candidate_dictionary.items():
     print(candidate_name + ": " + percent_display + "%  (" + str(candidate_votes) + ")")
 print("----------------------------")
 print('Winner: ' + winner_of_popular_vote)
+
+# write to a text file
+# https://www.w3schools.com/python/python_file_write.asp
+file = open('election-results.txt', 'a')
+file.write('Election Results')
+file.write('\n')
+file.write('-------------------------')
+file.write('\n')
+file.write('Total Votes: ' + str(total_votes))
+file.write('\n')
+file.write('-------------------------')
+file.write('\n')
+for candidate_name, candidate_votes in candidate_dictionary.items():
+    percentage_won = (candidate_votes / total_votes) * 100
+    percent_display = '{:0.3f}'.format(percentage_won)
+    file.write(candidate_name + ": " + percent_display + "%  (" + str(candidate_votes) + ")")
+    file.write('\n')
+
+file.write('-------------------------')
+file.write('\n')
+file.write('Winner: ' + winner_of_popular_vote)
+file.write('\n')
+file.write('-------------------------')
+file.close()
